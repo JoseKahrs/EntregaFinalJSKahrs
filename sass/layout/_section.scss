@@ -1,5 +1,9 @@
 @import "./mixin";
 
-section {
-    @include sectionContainter;
+#agregar {
+    @include sectionAgregar;
+}
+
+#cotizar {
+    @include sectionCotizar;
 }
