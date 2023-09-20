@@ -1,0 +1,5 @@
+@import "./mixin";
+
+section {
+    @include sectionContainter;
+}
