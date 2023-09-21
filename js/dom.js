@@ -152,6 +152,7 @@ console.log(searchBtn)
 /* input id: idAuto */
 /* input dias: diasAuto */
 /* boton cotizar: cotizarBtn */
+let formCoti= document.getElementById("formCoti")
 
 function cotizarAlquiler (array) {
   let idAuto = document.getElementById("idAuto").value
@@ -166,6 +167,8 @@ function cotizarAlquiler (array) {
   let total = 0
   total = diasAuto * autoSelect.precio
   console.log (`id auto: ${idAuto}, dias: ${diasAuto}, total: $${total}`)
+
+  formCoti.reset ()
 
   /* MOSTRAR RESULTADO EN HTML */
   

@@ -27,11 +27,16 @@
                 </select>
               </ul>
             </ul>
-          <form class="d-flex" role="search">
+          <form class="d-flex me-5" role="search">
             <input class="form-control me-2" type="search" placeholder="Buscar por marca" id="buscarBtn" aria-label="Search">
             <button class="btn btn-light" type="submit" id="searchBtn">Buscar</button>
           </form>
         </div>
+        <button type="button" class="btn btn-secondary btn-sm me-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="auto" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+          </svg>
+        </button>
       </div>
     </nav>
   </header>
@@ -45,36 +50,37 @@
   <section id="cotizar">
     <!-- TITULO COTIZACION -->
     <h2>Cotizar alquiler</h2>
-    <!-- ID VEHICULO -->
-    <div class="row g-2 align-items-center">
-      <div class="col-auto">
-        <label for="id" class="col-form-label fw-bold">ID del vehiculo:</label>
+    <form action="cotizacion" id="formCoti" class="d-flex">
+      <!-- ID VEHICULO -->
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="id" class="col-form-label fw-bold">ID del vehiculo:</label>
+        </div>
+        <div class="col-auto">
+          <input type="number" id="idAuto" class="form-control" placeholder="ID del vehiculo">
+        </div>
       </div>
-      <div class="col-auto">
-        <input type="number" id="idAuto" class="form-control" placeholder="ID del vehiculo">
+      <!-- CANTIDAD DE DIAS -->
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="dias" class="col-form-label fw-bold">Cantidad de dias:</label>
+        </div>
+        <div class="col-auto">
+          <input type="number" id="diasAuto" class="form-control" placeholder="Cantidad de dias">
+        </div>
       </div>
-    </div>
-    <!-- CANTIDAD DE DIAS -->
-    <div class="row g-2 align-items-center">
-      <div class="col-auto">
-        <label for="dias" class="col-form-label fw-bold">Cantidad de dias:</label>
+      <!-- BOTON COTIZACION -->
+      <button type="button" class="btn btn-primary" id="cotizarBtn">Cotizar</button>
+      <!-- RESULTADO COTIZACION -->
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="dias" class="col-form-label fw-bold">Total:</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="cotResult" class="form-control" placeholder="Precio total">
+        </div>
       </div>
-      <div class="col-auto">
-        <input type="number" id="diasAuto" class="form-control" placeholder="Cantidad de dias">
-      </div>
-    </div>
-    <!-- BOTON COTIZACION -->
-    <button type="button" class="btn btn-primary" id="cotizarBtn">Cotizar</button>
-    <!-- RESULTADO COTIZACION -->
-    <div class="row g-2 align-items-center">
-      <div class="col-auto">
-        <label for="dias" class="col-form-label fw-bold">Total:</label>
-      </div>
-      <div class="col-auto">
-        <input type="text" id="cotResult" class="form-control" placeholder="Precio total">
-      </div>
-    </div>
-
+    </form>
   </section>
 
   <main>
