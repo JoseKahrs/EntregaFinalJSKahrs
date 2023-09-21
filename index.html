@@ -18,16 +18,7 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="./pages/cotizacion.html">Cotizar un alquiler</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="./pages/agregar.html">Agregar un auto</a>
-                  </li>
-                  <ul>
+                    <ul>
                       <select id="selectOrden" class="form-select form-select-md" aria-label=".form-select-sm example">
                         <option selected>Ordenar por:</option>
                         <option value="1">Mayor a menor</option>
@@ -45,16 +36,115 @@
           </nav>
     </header>
 
+
+    <div id="title">
+      <h1 class="text-center my-5">Bienvenidos a JS Rent a Car</h1>
+    </div>
+
+       <!-- COTIZADOR DE ALQUILER -->
+       <section id="cotizar">
+        <h2>Cotizar alquiler</h2>
+          <div class="row g-3 align-items-center">
+              <div class="col-auto">
+                <label for="id" class="col-form-label fw-bold">ID del vehiculo:</label>
+              </div>
+              <div class="col-auto">
+                <input type="number" id="idAuto" class="form-control" placeholder="ID del vehiculo">
+              </div>
+          </div>
+          <div class="row g-3 align-items-center">
+              <div class="col-auto">
+                <label for="dias" class="col-form-label fw-bold">Cantidad de dias:</label>
+              </div>
+              <div class="col-auto">
+                <input type="number" id="diasAuto" class="form-control" placeholder="Cantidad de dias">
+              </div>
+          </div>
+          <button type="button" class="btn btn-primary" id="cotizarBtn">Cotizar</button>
+          <div class="row g-3 align-items-center">
+              <div class="col-auto">
+                <label for="dias" class="col-form-label fw-bold">Total:</label>
+              </div>
+              <div class="col-auto">
+                <input type="text" id="..." class="form-control" placeholder="$">
+              </div>
+          </div>
+  
+      </section>
+
     <main>
-      <div id="title">
-        <h1 class="text-center my-5">Bienvenidos a JS Rent a Car</h1>
-        
-      </div>
       <h3 class="text-center">Nuestra flota:</h3>
       <div id="garaje" class="d-flex justify-content-center row">
         <!-- GARAJE -->
       </div>
     </main>
+
+        <!-- AGREGAR UN AUTO AL CATALOGO -->
+        <section id="agregar" class="text-center">
+          <h2 class="mb-3">Agregar un auto al catalogo</h2>
+          <form id="formAddCar">
+            <div class="row g-3 align-items-center">
+              <div class="col-auto">
+                <label for="marca" class="col-form-label fw-bold">Marca:</label>
+              </div>
+              <div class="col-auto">
+                <input type="text" id="marcaInput" class="form-control" placeholder="Marca" required>
+              </div>
+            </div>
+            <div class="row g-3 align-items-center">
+              <div class="col-auto">
+                    <label for="modelo" class="col-form-label fw-bold">Modelo:</label>
+                  </div>
+                  <div class="col-auto">
+                    <input type="text" id="modeloInput" class="form-control" placeholder="Modelo" required>
+                  </div>
+                </div>
+            <div class="row g-3 align-items-center">
+                  <div class="col-auto">
+                    <label for="ano" class="col-form-label fw-bold">Año:</label>
+                  </div>
+                  <div class="col-auto">
+                    <input type="number" id="anoInput" class="form-control" placeholder="Año" required>
+                  </div>
+            </div>
+            <div class="row g-3 align-items-center">
+                  <div class="col-auto">
+                    <label for="ano" class="col-form-label fw-bold">Tipo:</label>
+                  </div>
+                  <div class="col-auto">
+                    <ul>
+                      <select class="form-select form-select-md" aria-label=".form-select-sm example">
+                            <option selected class="fw-bold" id="tipoInput">Tipo:</option>
+                            <option value="1">Sedan</option>
+                            <option value="2">Coupe</option>
+                            <option value="3">Deportivo</option>
+                            <option value="4">Cabrio</option>
+                            <option value="5">Suv</option>
+                            <option value="6">Berlina</option>
+                            <option value="7">Pickup</option>
+                            <option value="8">Otro</option>
+                          </select>
+                        </ul>
+                      </div>
+              </div>
+              <div class="row g-3 align-items-center">
+                  <div class="col-auto">
+                    <label for="precio" class="col-form-label fw-bold">Precio:</label>
+                  </div>
+                  <div class="col-auto">
+                    <input type="number" id="precioInput" class="form-control" placeholder="Precio" required>
+                  </div>
+              </div>
+              <div class="row g-3 align-items-center">
+                  <div class="col-auto">
+                      <label for="img" class="col-form-label fw-bold">Adjuntar imagen del vehiculo:</label>
+                      <input class="form-control" type="file" id="img">
+                  </div>
+              </div>
+          </form>
+          <button type="button" class="btn btn-primary" id="addCarBtn">Agregar</button>
+        </section>
+    
     
   <footer>
     <h2><a href="#headerNav">JS Rent a Car</a></h2>

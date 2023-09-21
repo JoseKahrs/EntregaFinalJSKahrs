@@ -22,7 +22,7 @@ class Auto {
   const auto2 = new Auto (2, "Bmw", "X6", 2021, "suv", 2000,"bmw2.jpg")
   const auto3 = new Auto (3, "Audi", "A3", 2021, "sedan", 800,"audi1.png")
   const auto4 = new Auto (4, "Audi", "R8", 2020, "coupe", 3500,"audi2.jpg")
-  const auto5 = new Auto (5, "Mercedes-benz", "Clase a", 2020, "berlina", 900,"mb1.jpg")
+  const auto5 = new Auto (5, "Mercedes-benz", "Clase a", 2020, "berlina", 900,"mb1.png")
   const auto6 = new Auto (6, "Mercedes-benz", "Sl", 2023, "cabrio", 3000,"mb2.jpg")
   const auto7 = new Auto (7, "Porsche", "Macan", 2022, "suv", 2300,"porsche1.jpg")
   const auto8 = new Auto (8, "Porsche", "Cayenne", 2023, "suv", 2500,"porsche2.jpg")
@@ -60,7 +60,7 @@ function mostrarGarajeDOM (array) {
 mostrarGarajeDOM (garaje)
 let formAddCar= document.getElementById("formAddCar")
 
-/* function agregarNuevoAuto (array) {
+function agregarNuevoAuto (array) {
     let marca = document.getElementById("marcaInput")
     let modelo = document.getElementById("modeloInput")
     let ano = document.getElementById("anoInput")
@@ -77,7 +77,7 @@ addCarBtn.addEventListener ("click", () =>{
     agregarNuevoAuto(garaje)
     mostrarGarajeDOM (garaje)
 
-}) */
+})
 
 /* ORDEN */
 /* ALFABETICO */
@@ -148,14 +148,18 @@ console.log(searchBtn)
 /* boton cotizar: cotizarBtn */
 
 function cotizarAlquiler (array) {
-  let idAuto = document.getElementById("idAuto")
-  let diasAuto =document.getElementById("diasAuto")
-  let autoSelect = auto.find(
+  let idAuto = document.getElementById("idAuto").value
+  let diasAuto =document.getElementById("diasAuto").value
+  console.log(idAuto)
+  console.log(diasAuto)
+
+  let autoSelect = garaje.find(
     (auto) => auto.id == idAuto
   )
+
   let total = 0
-  total = diasAuto.value * autoSelect.precio
-  console.log (`id auto: ${idAuto}, dias: ${diasAuto}, total: ${total}`)
+  total = diasAuto * autoSelect.precio
+  console.log (`id auto: ${idAuto}, dias: ${diasAuto}, total: $${total}`)
   
 }
 
