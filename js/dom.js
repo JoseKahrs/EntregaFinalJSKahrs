@@ -1,4 +1,4 @@
-
+/* CREACION OBJETO DE AUTOS */
 class Auto {
     constructor (id, marca, modelo, ano, tipo, precio, imagen){
       this.id = id,
@@ -18,6 +18,7 @@ class Auto {
   
   }
   
+  /* AGREGAR AUTOS */
   const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
   const auto2 = new Auto (2, "Bmw", "X6", 2021, "suv", 2000,"bmw2.jpg")
   const auto3 = new Auto (3, "Audi", "A3", 2021, "sedan", 800,"audi1.png")
@@ -35,6 +36,7 @@ garaje.push (auto1, auto2, auto3, auto4, auto5, auto6, auto7, auto8, auto9, auto
 
 let garajeAutos = document.getElementById("garaje")
 
+/* CATALOGO DE AUTOS */
 function mostrarGarajeDOM (array) {
     garajeAutos.innerHTML = ""
     for (let auto of array) {
@@ -60,6 +62,7 @@ function mostrarGarajeDOM (array) {
 mostrarGarajeDOM (garaje)
 let formAddCar= document.getElementById("formAddCar")
 
+/* AGREGAR NUEVO AUTO A CATALOGO */
 function agregarNuevoAuto (array) {
     let marca = document.getElementById("marcaInput")
     let modelo = document.getElementById("modeloInput")
@@ -80,6 +83,7 @@ addCarBtn.addEventListener ("click", () =>{
 })
 
 /* ORDEN */
+
 /* ALFABETICO */
 function ordenAlfabetico (array) {
   let ordenAlfa = array.concat ()
@@ -135,9 +139,11 @@ selectOrden.addEventListener("change", () => {
 })
 
 /* BUSCAR POR MARCA */
+
 /* placeholder */
 let buscarBtn = document.getElementById("buscarBtn")
 console.log(buscarBtn)
+
 /* Boton */
 let searchBtn = document.getElementById("searchBtn")
 console.log(searchBtn)
@@ -150,8 +156,8 @@ console.log(searchBtn)
 function cotizarAlquiler (array) {
   let idAuto = document.getElementById("idAuto").value
   let diasAuto =document.getElementById("diasAuto").value
-  console.log(idAuto)
-  console.log(diasAuto)
+  console.log(`ID:${idAuto}`)
+  console.log(`Cantidad de dias:${diasAuto}`)
 
   let autoSelect = garaje.find(
     (auto) => auto.id == idAuto
@@ -160,11 +166,13 @@ function cotizarAlquiler (array) {
   let total = 0
   total = diasAuto * autoSelect.precio
   console.log (`id auto: ${idAuto}, dias: ${diasAuto}, total: $${total}`)
+
+  /* MOSTRAR RESULTADO EN HTML */
   
 }
 
 let cotizarBtn = document.getElementById("cotizarBtn")
 cotizarBtn.addEventListener ("click", () => {
   cotizarAlquiler (garaje)
-  mostrarGarajeDOM (garaje)
+  
 })
