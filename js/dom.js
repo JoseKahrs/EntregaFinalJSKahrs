@@ -60,7 +60,7 @@ function mostrarGarajeDOM (array) {
 mostrarGarajeDOM (garaje)
 let formAddCar= document.getElementById("formAddCar")
 
-function agregarNuevoAuto (array) {
+/* function agregarNuevoAuto (array) {
     let marca = document.getElementById("marcaInput")
     let modelo = document.getElementById("modeloInput")
     let ano = document.getElementById("anoInput")
@@ -77,4 +77,90 @@ addCarBtn.addEventListener ("click", () =>{
     agregarNuevoAuto(garaje)
     mostrarGarajeDOM (garaje)
 
+}) */
+
+/* ORDEN */
+/* ALFABETICO */
+function ordenAlfabetico (array) {
+  let ordenAlfa = array.concat ()
+  ordenAlfa.sort (
+    (a,b) => {
+      if (a.marca > b.marca) {
+        return 1
+      }
+      if (a.marca < b.marca) {
+        return -1
+      }
+      return 0
+    }
+    )
+    mostrarGarajeDOM (ordenAlfa)
+  }
+
+/* MENOR A MAYOR */
+function precioMenor (array) {
+  let precioMenorMayor = array.concat ()
+  precioMenorMayor.sort (
+    (precio1, precio2) => precio1.precio - precio2.precio
+  )
+  mostrarGarajeDOM (precioMenorMayor)
+}
+
+/* MAYOR MENOR */
+function precioMayor (array) {
+  let precioMenorMayor = array.concat ()
+  precioMenorMayor.sort (
+    (precio1, precio2) => precio2.precio - precio1.precio
+  )
+  mostrarGarajeDOM (precioMenorMayor)
+}
+
+/* ORDEN CATALOGO */
+let selectOrden = document.getElementById("selectOrden")
+console.log(selectOrden)
+selectOrden.addEventListener("change", () => {
+    switch(selectOrden.value){
+        case "1":
+          precioMayor (garaje)
+        break
+        case "2":
+          precioMenor (garaje)
+        break
+        case "3":
+          ordenAlfabetico (garaje)
+        break
+        default:
+          mostrarGarajeDOM (garaje)
+    }
+})
+
+/* BUSCAR POR MARCA */
+/* placeholder */
+let buscarBtn = document.getElementById("buscarBtn")
+console.log(buscarBtn)
+/* Boton */
+let searchBtn = document.getElementById("searchBtn")
+console.log(searchBtn)
+
+/* CALCULAR ALQUILER */
+/* input id: idAuto */
+/* input dias: diasAuto */
+/* boton cotizar: cotizarBtn */
+
+function cotizarAlquiler (array) {
+  let idAuto = document.getElementById("idAuto")
+  let diasAuto =document.getElementById("diasAuto")
+  let autoSelect = auto.find(
+    (auto) => auto.id == idAuto
+  )
+  let total = 0
+  total = diasAuto.value * autoSelect.precio
+  console.log (`id auto: ${idAuto}, dias: ${diasAuto}, total: ${total}`)
+  
+}
+
+let cotizarBtn = document.getElementById("cotizarBtn")
+cotizarBtn.addEventListener ("click", () => {
+  cotizarAlquiler (garaje)
+  mostrarGarajeDOM (garaje)
 })

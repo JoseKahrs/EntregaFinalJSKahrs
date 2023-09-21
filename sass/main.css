@@ -11,6 +11,14 @@ body {
 
 /* HEADER */
 /* MAIN */
+main h1 {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  margin: 5px;
+  padding: 5px;
+  color: white;
+}
+
 /* SECTION */
 #agregar {
   background-color: rgba(0, 0, 0, 0.2);
@@ -23,6 +31,9 @@ body {
   justify-content: space-between;
   align-items: center;
   justify-items: center;
+}
+#agregar h2 {
+  color: white;
 }
 
 #cotizar {
@@ -37,6 +48,21 @@ body {
   align-items: center;
   justify-items: center;
 }
+#cotizar h2 {
+  color: white;
+}
 
 /* FOOTER */
+footer {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+footer h2 {
+  text-align: center;
+  padding: 10px;
+}
+footer h2 a {
+  text-decoration: none;
+  color: white;
+}
+
 /* MIXIN *//*# sourceMappingURL=main.css.map */

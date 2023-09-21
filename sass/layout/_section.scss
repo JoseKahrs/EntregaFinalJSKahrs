@@ -2,8 +2,14 @@
 
 #agregar {
     @include sectionAgregar;
+    & h2 {
+        color: white;
+    }
 }
 
 #cotizar {
     @include sectionCotizar;
+    & h2 {
+        color: white;
+    }
 }
