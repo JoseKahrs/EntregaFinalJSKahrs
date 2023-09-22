@@ -51,7 +51,7 @@ function mostrarGarajeDOM (array) {
           <p class="card-text">Año: ${auto.ano}</p>
           <p class="card-text">Tipo: ${auto.tipo}</p>
           <p class="card-text">Precio: $${auto.precio}</p>
-          <button class="btn btn-outline-primary" type="submit">Alquilar</button>
+          <button class="btn btn-outline-primary" type="submit">Reservar</button>
         </div>
       </div>
         `
@@ -141,18 +141,37 @@ selectOrden.addEventListener("change", () => {
 /* BUSCAR POR MARCA */
 
 /* placeholder */
-let buscarBtn = document.getElementById("buscarBtn")
-console.log(buscarBtn)
+/* let buscarMarca = document.getElementById("buscarMarca")
+console.log(buscarBtn) */
 
 /* Boton */
+/* let searchBtn = document.getElementById("searchBtn")
+console.log(searchBtn) */
+
+function buscadorMarca (array) {
+  let buscarMarca = document.getElementById("buscarMarca").value
+  let busqueda = garaje.filter (
+    (auto) => auto.marca.toLowerCase () == buscarMarca.toLowerCase ()
+  )
+  if (busqueda.lenght == 0) {
+    alert (`No hay coincidencia para su busqueda "${buscarMarca}"`)
+  }
+  else {
+    mostrarGarajeDOM(busqueda)
+  }
+}
+
 let searchBtn = document.getElementById("searchBtn")
-console.log(searchBtn)
+searchBtn.addEventListener ("click", () => {
+  buscadorMarca(garaje)
+})
 
 /* CALCULAR ALQUILER */
 /* input id: idAuto */
 /* input dias: diasAuto */
 /* boton cotizar: cotizarBtn */
-let formCoti= document.getElementById("formCoti")
+let formCoti = document.getElementById("formCoti")
+let resultCot = document.getElementById("resultCot")
 
 function cotizarAlquiler (array) {
   let idAuto = document.getElementById("idAuto").value
@@ -171,6 +190,13 @@ function cotizarAlquiler (array) {
   formCoti.reset ()
 
   /* MOSTRAR RESULTADO EN HTML */
+  resultCot.innerHTML = ""
+  let nuevoResultado = document.createElement ("div")
+  nuevoResultado.className = "text-white"
+  nuevoResultado.innerHTML = `
+    <h5>Total: $${total}</h5>
+  `
+  resultCot.append(nuevoResultado)
   
 }
 
@@ -179,3 +205,39 @@ cotizarBtn.addEventListener ("click", () => {
   cotizarAlquiler (garaje)
   
 })
+
+/* ELIMINAR UN AUTO DEL CATALOGO */
+/* id input: idEliminar */
+/* id boton: eliminarBtn */
+
+/* RESETEAR FORMULARIO PARA ELIMINAR!! */
+let formEliminar = document.getElementById("formELiminar")
+
+function eliminarAuto (array) {
+  let idEliminar = document.getElementById("idEliminar").value
+  let coincidencia = false
+  for (let auto of array) {
+    if (auto.id == idEliminar) {
+      let indice = array.indexOf (auto)
+      array.splice (indice, 1)
+      mostrarGarajeDOM (array)
+    }
+  }
+  if (!coincidencia) {
+    console.log (`NO SE PUDO`)
+  }
+
+  formEliminar.reset ()
+}
+
+let eliminarBtn = document.getElementById ("eliminarBtn")
+eliminarBtn.addEventListener ("click", () => {
+  eliminarAuto (garaje)
+})
+
+/* VISTA USUARIO: Catalogo y cotizador */
+
+/* VISTA EMPRESA: Catalogo, agregar y eliminar vehiculo */
+
+/* VISTA AMDAS: ambas */
+

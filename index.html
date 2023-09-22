@@ -18,25 +18,32 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <ul>
-                <select id="selectOrden" class="form-select form-select-md" aria-label=".form-select-sm example">
-                  <option selected>Ordenar por:</option>
-                  <option value="1">Mayor a menor</option>
-                  <option value="2">Menor a mayor</option>
-                  <option value="3">Alfabeticamente</option>
-                </select>
-              </ul>
+            <ul>
+              <select id="selectOrden" class="form-select form-select-md" aria-label=".form-select-sm example">
+                <option selected>Ordenar por:</option>
+                <option value="1">Mayor a menor</option>
+                <option value="2">Menor a mayor</option>
+                <option value="3">Alfabeticamente</option>
+              </select>
             </ul>
+          </ul>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <a class="navbar-brand mb-0 h1" href="./index.html">Vista:</a>
+            <ul>
+              <select id="selectOrden" class="form-select form-select-md" aria-label=".form-select-sm example">
+                <option selected>Ver como:</option>
+                <option value="1">Usuario</option>
+                <option value="2">Empresa</option>
+                <option value="3">Ambas</option>
+              </select>
+            </ul>
+          </ul>
           <form class="d-flex me-5" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar por marca" id="buscarBtn" aria-label="Search">
+            <input class="form-control me-2" type="search" placeholder="Buscar por marca" id="buscarMarca" aria-label="Search">
             <button class="btn btn-light" type="submit" id="searchBtn">Buscar</button>
           </form>
         </div>
-        <button type="button" class="btn btn-secondary btn-sm me-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="auto" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-          </svg>
-        </button>
+        <button class="btn btn-light" type="submit" id="searchBtn">Reservas</button>
       </div>
     </nav>
   </header>
@@ -73,12 +80,8 @@
       <button type="button" class="btn btn-primary" id="cotizarBtn">Cotizar</button>
       <!-- RESULTADO COTIZACION -->
       <div class="row g-3 align-items-center">
-        <div class="col-auto">
-          <label for="dias" class="col-form-label fw-bold">Total:</label>
-        </div>
-        <div class="col-auto">
-          <input type="text" id="cotResult" class="form-control" placeholder="Precio total">
-        </div>
+        <div class="col-auto" id="resultCot">
+        <!-- RESULTADO -->
       </div>
     </form>
   </section>
@@ -164,6 +167,23 @@
     </form>
     <!-- BOTON PARA ANADIR -->
     <button type="button" class="btn btn-primary mt-1" id="addCarBtn">Agregar</button>
+  </section>
+
+  <!-- ELIMINAR UN AUTO DEL CATALOGO -->
+  <section id="eliminar">
+    <h4 class="text-white">Eliminar un auto del catalogo</h4 class="text-white">
+    <form id="formEliminar" class="d-flex">
+       <!-- ID A COTIZAR -->
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="id" class="col-form-label fw-bold">ID del vehiculo:</label>
+        </div>
+        <div class="col-auto">
+          <input type="number" id="idEliminar" class="form-control" placeholder="ID del vehiculo">
+        </div>
+      </div>
+    </form>
+    <button type="button" class="btn btn-primary mt-1" id="eliminarBtn">Eliminar</button>
   </section>
     
     

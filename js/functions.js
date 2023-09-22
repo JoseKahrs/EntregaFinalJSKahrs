@@ -21,7 +21,7 @@ if (horario >= 6 && horario <= 12){
 }
 /* OBJETOS */
 //Autos
-class Auto {
+/* class Auto {
   constructor (id, marca, modelo, ano, tipo, precio, imagen){
     this.id = id,
     this.marca = marca,
@@ -38,9 +38,9 @@ class Auto {
     console.log (this.id, this.marca, this.modelo, this.ano, this.tipo, this.precio)
   }
 
-}
+} */
 
-const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
+/* const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
 const auto2 = new Auto (2, "Bmw", "X6", 2021, "suv", 2000,"bmw2.jpg")
 const auto3 = new Auto (3, "Audi", "A3", 2021, "sedan", 800,"audi1.png")
 const auto4 = new Auto (4, "Audi", "R8", 2020, "coupe", 3500,"audi2.jpg")
@@ -49,17 +49,17 @@ const auto6 = new Auto (6, "Mercedes-benz", "Sl", 2023, "cabrio", 3000,"mb2.jpg"
 const auto7 = new Auto (7, "Porsche", "Macan", 2022, "suv", 2300,"porsche1.jpg")
 const auto8 = new Auto (8, "Porsche", "Cayenne", 2023, "suv", 2500,"porsche2.jpg")
 const auto9 = new Auto (9, "Ford", "Mustang", 2020, "coupe", 2600,"fordM.jpeg")
-const auto10 = new Auto (10, "Ford", "Raptor", 2022, "4x4", 1800,"fordR.png")
+const auto10 = new Auto (10, "Ford", "Raptor", 2022, "4x4", 1800,"fordR.png") */
 
 /* ARRAYS */
 //Autos
-const garaje = []
+/* const garaje = []
 garaje.push (auto1, auto2, auto3, auto4, auto5, auto6, auto7, auto8, auto9, auto10)
-
+ */
 /* FUNCIONES */
 
 /* MOSTRAR CATALOGO */
-function mostrarGaraje (array) {
+/* function mostrarGaraje (array) {
   let catalogo = ``
   for (let auto of array) {
     console.log (auto.id, auto.marca, auto.modelo, auto.ano, auto.tipo, auto.precio)
@@ -67,9 +67,9 @@ function mostrarGaraje (array) {
   }
   alert (catalogo)
 }
-
+ */
 /* AGREGAR UN AUTO */
-function agregarAuto (array) {
+/* function agregarAuto (array) {
   let marca = prompt(`Ingrese la marca del vehiculo`)
   while (marca == "") {
     marca = prompt(`Por favor. ingrese la marca del vehiculo`)
@@ -94,8 +94,8 @@ function agregarAuto (array) {
   garaje.push (nuevoAuto)
   alert (`Se agrego el siguiente vehiculo: \n Marca:${marca}\n Modelo:${modelo}\n Ano: ${ano}\n Tipo: ${tipo}\n Precio: $${precio}`)
 }
-/* ELIMINAR UN AUTO */
-function borrarAuto (array) {
+ *//* ELIMINAR UN AUTO */
+/* function borrarAuto (array) {
   
   mostrarGaraje (array)
   let idEliminar = parseInt(prompt(`Observar el catalogo en consola y seleccionar ID a eliminar`))
@@ -110,7 +110,7 @@ function borrarAuto (array) {
     if (!coincidencia) {
       console.log (`El id ${idEliminar} no coincide con el id de ningun auto. No se pudo eliminar`)
     }
-}
+} */
 
 /* MENU PARA BUSCADOR */
 function menuBusqueda () {
@@ -179,7 +179,7 @@ function buscarAno (array) {
 }
 
 /* ORDENAR ALFABETICAMENTE */
-function ordenAlfabetico (array) {
+/* function ordenAlfabetico (array) {
   let ordenAlfa = array.concat ()
   ordenAlfa.sort (
     (a,b) => {
@@ -193,19 +193,19 @@ function ordenAlfabetico (array) {
     }
     )
     mostrarGaraje (ordenAlfa)
-  }
+  } */
 
   /* ORDENAR POR ANO */
-  function ordenarMenorMayor (array) {
+/*   function ordenarMenorMayor (array) {
     let arrayMenorMayor = array.concat ()
     arrayMenorMayor.sort (
       (ano1, ano2) => ano1.ano - ano2.ano
       )
       mostrarGaraje (arrayMenorMayor)
-}
+} */
 
 // POR PRECIO
-function ordenarPrecio (array) {
+/* function ordenarPrecio (array) {
   let salirMenu = false
   do {
     let opcionIngresada = parseInt(prompt(`Seleccione en que orden desea ordenar los precios \n
@@ -231,28 +231,28 @@ function ordenarPrecio (array) {
         break
       }
     }while(!salirMenu)
-}
+} */
 
 //Precio menor a mayor
-function precioMenor (array) {
+/* function precioMenor (array) {
   let precioMenorMayor = array.concat ()
   precioMenorMayor.sort (
     (precio1, precio2) => precio1.precio - precio2.precio
   )
   mostrarGaraje (precioMenorMayor)
-}
+} */
 
 //Precio mayor a menor
-function precioMayor (array) {
+/* function precioMayor (array) {
   let precioMenorMayor = array.concat ()
   precioMenorMayor.sort (
     (precio1, precio2) => precio2.precio - precio1.precio
   )
   mostrarGaraje (precioMenorMayor)
-}
+} */
 
 //Calculo Alquiler
-function calculoAlquiler (auto) {
+/* function calculoAlquiler (auto) {
   mostrarGaraje (auto)
   let idAlquiler = parseInt(prompt(`Mire la consola y ingrese el id del auto que desea alquilar`))
   while (isNaN(idAlquiler)) {
@@ -269,10 +269,10 @@ function calculoAlquiler (auto) {
   total = dias * autoAlquilado.precio
   console.log (`Desea alquilar el auto ${autoAlquilado.id}, marca ${autoAlquilado.marca}, modelo ${autoAlquilado.modelo}, durante ${dias} dias y el costo total es de $${total}`)
   alert (`Desea alquilar el auto ${autoAlquilado.id}, marca ${autoAlquilado.marca}, modelo ${autoAlquilado.modelo}, durante ${dias} dias y el costo total es de $${total}`)
-}
+} */
 
 //MENU do while y switch 
-let salirMenu = false
+/* let salirMenu = false
 
 do{
 let opcionIngresada = parseInt(prompt(`Bienvenido/a a nuestro simulador! \nIngrese la opción deseada \n
@@ -328,4 +328,4 @@ let opcionIngresada = parseInt(prompt(`Bienvenido/a a nuestro simulador! \nIngre
         alert (`Opción no válida, ingrese alguna presente en el menu`)
       break
    }
-}while(!salirMenu)
+}while(!salirMenu) */

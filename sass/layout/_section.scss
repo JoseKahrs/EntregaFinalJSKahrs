@@ -13,3 +13,7 @@
         color: white;
     }
 }
+
+#eliminar {
+    @include sectionAgregar;
+}
