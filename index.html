@@ -38,12 +38,18 @@
               </select>
             </ul>
           </ul>
-          <form class="d-flex me-5" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar por marca" id="buscarMarca" aria-label="Search">
-            <button class="btn btn-light" type="submit" id="searchBtn">Buscar</button>
+          <!-- BUSCADOR -->
+          <form class="d-flex me-5" role="search" id="formBuscar">
+            <div>
+              <input class="form-control me-2" type="search" placeholder="Buscar por marca" id="buscarMarca" aria-label="Search">
+            </div>
+            <button class="btn btn-light" type="submit" id="search">Buscar</button>
           </form>
+          
         </div>
-        <button class="btn btn-light" type="submit" id="searchBtn">Reservas</button>
+        <a href="./pages/reservas.html">
+          <button class="btn btn-light" type="submit" id="searchBtn">Reservas</button>
+        </a>
       </div>
     </nav>
   </header>
@@ -173,7 +179,7 @@
   <section id="eliminar">
     <h4 class="text-white">Eliminar un auto del catalogo</h4 class="text-white">
     <form id="formEliminar" class="d-flex">
-       <!-- ID A COTIZAR -->
+      <!-- ID A ELIMINAR-->
       <div class="row g-3 align-items-center">
         <div class="col-auto">
           <label for="id" class="col-form-label fw-bold">ID del vehiculo:</label>
@@ -182,11 +188,10 @@
           <input type="number" id="idEliminar" class="form-control" placeholder="ID del vehiculo">
         </div>
       </div>
+      <button type="submit" class="btn btn-primary mt-1" id="eliminarBtn">Eliminar</button>
     </form>
-    <button type="button" class="btn btn-primary mt-1" id="eliminarBtn">Eliminar</button>
   </section>
-    
-    
+  
   <footer>
     <!-- IR A ARRIBA -->
     <h2><a href="#headerNav">JS Rent a Car</a></h2>

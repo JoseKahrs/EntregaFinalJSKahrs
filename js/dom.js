@@ -147,24 +147,28 @@ console.log(buscarBtn) */
 /* Boton */
 /* let searchBtn = document.getElementById("searchBtn")
 console.log(searchBtn) */
+let formBuscar = document.getElementById("formBuscar")
 
-function buscadorMarca (array) {
-  let buscarMarca = document.getElementById("buscarMarca").value
-  let busqueda = garaje.filter (
-    (auto) => auto.marca.toLowerCase () == buscarMarca.toLowerCase ()
-  )
-  if (busqueda.lenght == 0) {
-    alert (`No hay coincidencia para su busqueda "${buscarMarca}"`)
-  }
-  else {
-    mostrarGarajeDOM(busqueda)
-  }
+function buscadorMarca(array) {
+	let buscarMarca = document.getElementById("buscarMarca").value;
+	let busqueda = array.filter((auto) => {
+		console.log(auto);
+		console.log(auto.marca.toLowerCase());
+		console.log(buscarMarca.toLowerCase());
+		return auto.marca.toLowerCase().includes(buscarMarca.toLowerCase());
+	});
+	if (busqueda.lenght == 0) {
+		alert(`No hay coincidencia para su busqueda "${buscarMarca}"`);
+	} else {
+		mostrarGarajeDOM(busqueda);
+	}
 }
 
-let searchBtn = document.getElementById("searchBtn")
-searchBtn.addEventListener ("click", () => {
-  buscadorMarca(garaje)
-})
+formBuscar = document.getElementById("formBuscar");
+search.addEventListener("submit", (e) => {
+	e.preventDefault();
+	buscadorMarca(garaje);
+});
 
 /* CALCULAR ALQUILER */
 /* input id: idAuto */
@@ -211,29 +215,28 @@ cotizarBtn.addEventListener ("click", () => {
 /* id boton: eliminarBtn */
 
 /* RESETEAR FORMULARIO PARA ELIMINAR!! */
-let formEliminar = document.getElementById("formELiminar")
+let formEliminar = document.getElementById("formEliminar");
+function eliminarAuto(array) {
+	let idEliminar = document.getElementById("idEliminar").value;
+	let coincidencia = false;
+	for (let auto of array) {
+		if (auto.id == idEliminar) {
+			let indice = array.indexOf(auto);
+			array.splice(indice, 1);
+			mostrarGarajeDOM(array);
+		}
+	}
+	if (!coincidencia) {
+		console.log(`NO SE PUDO`);
+	}
 
-function eliminarAuto (array) {
-  let idEliminar = document.getElementById("idEliminar").value
-  let coincidencia = false
-  for (let auto of array) {
-    if (auto.id == idEliminar) {
-      let indice = array.indexOf (auto)
-      array.splice (indice, 1)
-      mostrarGarajeDOM (array)
-    }
-  }
-  if (!coincidencia) {
-    console.log (`NO SE PUDO`)
-  }
-
-  formEliminar.reset ()
+	formEliminar.reset();
 }
 
-let eliminarBtn = document.getElementById ("eliminarBtn")
-eliminarBtn.addEventListener ("click", () => {
-  eliminarAuto (garaje)
-})
+formEliminar.addEventListener("submit", (e) => {
+	e.preventDefault();
+	eliminarAuto(garaje);
+});
 
 /* VISTA USUARIO: Catalogo y cotizador */
 
