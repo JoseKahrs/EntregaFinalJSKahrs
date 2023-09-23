@@ -23,3 +23,21 @@
     align-items: center;
     justify-items: center;
 }
+
+@mixin sectionReservas {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 20px;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    justify-items: center;
+    & h3 {
+        color: white;
+        text-align: center;
+    }
+}
+

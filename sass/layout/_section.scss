@@ -17,3 +17,7 @@
 #eliminar {
     @include sectionAgregar;
 }
+
+.reservas {
+    @include sectionReservas;
+}

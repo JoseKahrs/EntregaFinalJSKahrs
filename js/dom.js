@@ -51,7 +51,7 @@ function mostrarGarajeDOM (array) {
           <p class="card-text">Año: ${auto.ano}</p>
           <p class="card-text">Tipo: ${auto.tipo}</p>
           <p class="card-text">Precio: $${auto.precio}</p>
-          <button class="btn btn-outline-primary" type="submit">Reservar</button>
+          <button class="btn btn-outline-primary" type="submit" id:"reservarBtn">Reservar</button>
         </div>
       </div>
         `
@@ -243,4 +243,7 @@ formEliminar.addEventListener("submit", (e) => {
 /* VISTA EMPRESA: Catalogo, agregar y eliminar vehiculo */
 
 /* VISTA AMDAS: ambas */
+
+/* ANADIR A CARRITO (RESERVAS) */
+
 
