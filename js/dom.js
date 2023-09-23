@@ -146,7 +146,7 @@ function buscarAuto (buscador, array) {
 
   let coincidencias = array.filter (
     (auto) => {
-      return auto.marca.toLowerCase().startWith(buscador.toLowerCase()) || auto.modelo.toLowerCase().startWith(buscador.toLowerCase())}
+      return auto.marca.toLowerCase().startsWith(buscador.toLowerCase()) || auto.modelo.toLowerCase().startsWith(buscador.toLowerCase())}
   )
   coincidencias.length > 0 ? (console.log(coincidencias), mostrarGarajeDOM (coincidencias)) : (mostrarGarajeDOM (array), coincidenciasDiv.innerHTML = `<h3>No hay coincidencias con su busqueda</h3>`)
   
@@ -155,7 +155,7 @@ function buscarAuto (buscador, array) {
 
 buscador.addEventListener("input", () => {
   console.log(buscador.value)
-  mostrarGarajeDOM(garaje)
+  buscarAuto(buscador.value, garaje)
 })
 
 /* CALCULAR ALQUILER */
