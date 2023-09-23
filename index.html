@@ -40,12 +40,8 @@
           </ul>
           <!-- BUSCADOR -->
           <form class="d-flex me-5" role="search" id="formBuscar">
-            <div>
-              <input class="form-control me-2" type="search" placeholder="Buscar por marca" id="buscarMarca" aria-label="Search">
-            </div>
-            <button class="btn btn-light" type="submit" id="search">Buscar</button>
+              <input class="form-control me-2" type="search" placeholder="Buscar Marca o Modelo" id="buscador" aria-label="Search">
           </form>
-
         </div>
         <a href="./pages/reservas.html">
           <button class="btn btn-success" type="submit" id="searchBtn">Reservas</button>
@@ -94,6 +90,9 @@
 
   <main>
     <h3 class="text-center">Nuestra flota:</h3>
+    <div id="coincidenciasDiv" class="text-center">
+      <!-- NO HAY COINCIDENCIA -->
+    </div>
     <!-- ADICION DE AUTOS -->
     <div id="garaje" class="d-flex justify-content-center row">
       <!-- GARAJE -->

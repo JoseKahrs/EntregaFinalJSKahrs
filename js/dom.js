@@ -50,7 +50,7 @@ function mostrarGarajeDOM (array) {
           <p class="card-text">ID: ${auto.id}</p>
           <p class="card-text">Año: ${auto.ano}</p>
           <p class="card-text">Tipo: ${auto.tipo}</p>
-          <p class="card-text">Precio: $${auto.precio}</p>
+          <p class="card-text text-danger fs-5 text fw-semibold">Precio: $${auto.precio}</p>
           <button class="btn btn-outline-success" type="submit" id:"reservarBtn">Reservar</button>
         </div>
       </div>
@@ -139,36 +139,24 @@ selectOrden.addEventListener("change", () => {
 })
 
 /* BUSCAR POR MARCA */
+let buscador = document.getElementById("buscador")
+let coincidenciasDiv = document.getElementById("coincidenciasDiv")
 
-/* placeholder */
-/* let buscarMarca = document.getElementById("buscarMarca")
-console.log(buscarBtn) */
+function buscarAuto (buscador, array) {
 
-/* Boton */
-/* let searchBtn = document.getElementById("searchBtn")
-console.log(searchBtn) */
-let formBuscar = document.getElementById("formBuscar")
-
-function buscadorMarca(array) {
-	let buscarMarca = document.getElementById("buscarMarca").value;
-	let busqueda = array.filter((auto) => {
-		console.log(auto);
-		console.log(auto.marca.toLowerCase());
-		console.log(buscarMarca.toLowerCase());
-		return auto.marca.toLowerCase().includes(buscarMarca.toLowerCase());
-	});
-	if (busqueda.lenght == 0) {
-		alert(`No hay coincidencia para su busqueda "${buscarMarca}"`);
-	} else {
-		mostrarGarajeDOM(busqueda);
-	}
+  let coincidencias = array.filter (
+    (auto) => {
+      return auto.marca.toLowerCase().startWith(buscador.toLowerCase ()) || auto.modelo.toLowerCase ().startWith(buscador.toLowerCase ())}
+  )
+  coincidencias.length > 0 ? (console.log(coincidencias), mostrarGarajeDOM (coincidencias)) : (mostrarGarajeDOM (array), coincidenciasDiv.innerHTML = `<h3>No hay coincidencias con su busqueda</h3>`)
+  
+  
 }
 
-formBuscar = document.getElementById("formBuscar");
-search.addEventListener("submit", (e) => {
-	e.preventDefault();
-	buscadorMarca(garaje);
-});
+buscador.addEventListener("input", () => {
+  console.log(buscarAuto.value)
+  mostrarGarajeDOM(garaje)
+})
 
 /* CALCULAR ALQUILER */
 /* input id: idAuto */
