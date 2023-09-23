@@ -43,15 +43,15 @@ function mostrarGarajeDOM (array) {
         let autoNuevoDiv = document.createElement ("div")
         autoNuevoDiv.className = "col-12 col-md-3 col-lg-3 m-2"
         autoNuevoDiv.innerHTML = `
-        <div id="${auto.id}" class="card text-center border border-success" style="width: 18rem;">
-        <img src="../img/${auto.imagen}" class="card-img-top" alt="${auto.marca} ${auto.modelo}">
+        <div id="${auto.id}" class="card text-center" style="width: 18rem;">
+        <img src="./img/${auto.imagen}" class="card-img-top" alt="${auto.marca} ${auto.modelo}">
         <div class="card-body">
           <h4 class="card-title">${auto.marca} ${auto.modelo}</h4>
           <p class="card-text">ID: ${auto.id}</p>
           <p class="card-text">Año: ${auto.ano}</p>
           <p class="card-text">Tipo: ${auto.tipo}</p>
           <p class="card-text text-danger fs-5 text fw-semibold">Precio: $${auto.precio}</p>
-          <button class="btn btn-outline-success" type="submit" id:"reservarBtn">Reservar</button>
+          <button class="btn btn-outline-success" type="submit" id:"reservarBtn${auto.id}">Reservar</button>
         </div>
       </div>
         `
@@ -146,7 +146,7 @@ function buscarAuto (buscador, array) {
 
   let coincidencias = array.filter (
     (auto) => {
-      return auto.marca.toLowerCase().startWith(buscador.toLowerCase ()) || auto.modelo.toLowerCase ().startWith(buscador.toLowerCase ())}
+      return auto.marca.toLowerCase().startWith(buscador.toLowerCase()) || auto.modelo.toLowerCase().startWith(buscador.toLowerCase())}
   )
   coincidencias.length > 0 ? (console.log(coincidencias), mostrarGarajeDOM (coincidencias)) : (mostrarGarajeDOM (array), coincidenciasDiv.innerHTML = `<h3>No hay coincidencias con su busqueda</h3>`)
   
@@ -154,7 +154,7 @@ function buscarAuto (buscador, array) {
 }
 
 buscador.addEventListener("input", () => {
-  console.log(buscarAuto.value)
+  console.log(buscador.value)
   mostrarGarajeDOM(garaje)
 })
 
@@ -233,5 +233,3 @@ formEliminar.addEventListener("submit", (e) => {
 /* VISTA AMDAS: ambas */
 
 /* ANADIR A CARRITO (RESERVAS) */
-
-

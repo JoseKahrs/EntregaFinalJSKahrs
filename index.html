@@ -43,9 +43,27 @@
               <input class="form-control me-2" type="search" placeholder="Buscar Marca o Modelo" id="buscador" aria-label="Search">
           </form>
         </div>
-        <a href="./pages/reservas.html">
-          <button class="btn btn-success" type="submit" id="searchBtn">Reservas</button>
-        </a>
+        <!-- MIS RESERVAS BOTON -->
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Mis reservas
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title fs-5 text-white" id="exampleModalLabel">Mis reservas:</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body" id="autosReservados">
+                <!-- AUTOS RESERVADOS -->
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
   </header>

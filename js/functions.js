@@ -40,6 +40,16 @@ if (horario >= 6 && horario <= 12){
 
 } */
 
+{/* <div class="card border-primary mb-3" id ="productoCarrito${productoCarrito.id}" style="max-width: 540px;">
+                 <img class="card-img-top" height="300px" src="assets/${productoCarrito.imagen}" alt="">
+                 <div class="card-body">
+                        <h4 class="card-title">${productoCarrito.titulo}</h4>
+                        <p class="card-text">${productoCarrito.autor}</p>
+                         <p class="card-text">$${productoCarrito.precio}</p> 
+                         <button class= "btn btn-danger" id="botonEliminar${productoCarrito.id}"><i class="fas fa-trash-alt"></i></button>
+                 </div>    
+            </div> */}
+
 /* const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
 const auto2 = new Auto (2, "Bmw", "X6", 2021, "suv", 2000,"bmw2.jpg")
 const auto3 = new Auto (3, "Audi", "A3", 2021, "sedan", 800,"audi1.png")
