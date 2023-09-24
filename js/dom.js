@@ -43,7 +43,7 @@ function mostrarGarajeDOM (array) {
         let autoNuevoDiv = document.createElement ("div")
         autoNuevoDiv.className = "col-12 col-md-3 col-lg-3 m-2"
         autoNuevoDiv.innerHTML = `
-        <div id="${auto.id}" class="card text-center" style="width: 18rem;">
+        <div id="${auto.id}" class="card text-center text-bg-dark border border-light" style="width: 18rem;">
         <img src="./img/${auto.imagen}" class="card-img-top" alt="${auto.marca} ${auto.modelo}">
         <div class="card-body">
           <h4 class="card-title">${auto.marca} ${auto.modelo}</h4>
@@ -184,7 +184,7 @@ function cotizarAlquiler (array) {
   /* MOSTRAR RESULTADO EN HTML */
   resultCot.innerHTML = ""
   let nuevoResultado = document.createElement ("div")
-  nuevoResultado.className = "text-white"
+  nuevoResultado.className = "text-success"
   nuevoResultado.innerHTML = `
     <h5>Total: $${total}</h5>
   `
@@ -233,3 +233,5 @@ formEliminar.addEventListener("submit", (e) => {
 /* VISTA AMDAS: ambas */
 
 /* ANADIR A CARRITO (RESERVAS) */
+/* boton */
+let 

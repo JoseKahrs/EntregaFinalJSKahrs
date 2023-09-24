@@ -21,3 +21,7 @@
 .reservas {
     @include sectionReservas;
 }
+
+#title h1 {
+    color: white;
+}

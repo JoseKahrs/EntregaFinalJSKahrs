@@ -1,0 +1,32 @@
+/* LIGHT MODE */
+.lightmode {
+    background-color: white;
+    & #title {
+        & h1 {
+            color: black;
+        }
+    }
+    & #cotizar {
+        color: black;
+    }
+    & main {
+        & .text-white {
+            color: black !important;
+        }
+        & #garaje {
+            & .text-bg-dark {
+                background-color: rgb(243, 243, 243) !important;
+            }
+            & .border-light {
+                color: black !important;
+                border: solid 0.5px rgb(129, 129, 129) !important;
+            }
+        }
+    }
+    & #formAddCar {
+        color: black !important;
+    }
+    & #formEliminar {
+        color: black !important;
+    }
+}
