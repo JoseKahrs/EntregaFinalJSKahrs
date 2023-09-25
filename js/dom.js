@@ -47,6 +47,7 @@ if (localStorage.getItem("garaje")) {
 
 }
 
+let reservasCarrito = JSON.parse(localStorage.getItem("reservas")) ?? []
 let garajeAutos = document.getElementById("garaje")
 
 /* CATALOGO DE AUTOS */
@@ -64,17 +65,30 @@ function mostrarGarajeDOM (array) {
           <p class="card-text">Año: ${auto.ano}</p>
           <p class="card-text">Tipo: ${auto.tipo}</p>
           <p class="card-text text-danger fs-5 text fw-semibold">Precio: $${auto.precio}</p>
-          <button class="btn btn-outline-success" type="submit" id:"reservarBtn${auto.id}">Reservar</button>
+          <button class="btn btn-outline-success" type="submit" id="reservarBtn${auto.id}">Reservar</button>
         </div>
-      </div>
-        `
-        garajeAutos.append(autoNuevoDiv)
+      </div>`
+      garajeAutos.append(autoNuevoDiv)
+
+        let reservarBtn = document.getElementById(`reservarBtn${auto.id}`)
+        reservarBtn.addEventListener ("click", () => {
+          agregarReserva(auto)
+        })
     }
   }
 
-mostrarGarajeDOM (garaje)
-let formAddCar= document.getElementById("formAddCar")
+  function agregarReserva (elemento) {
+    let autoReservado = reservasCarrito.find ((auto) => auto.id == elemento.id)
+    autoReservado == undefined ?
+        (
+          reservasCarrito.push(elemento),
+          localStorage.setItem("reservas", JSON.stringify(reservasCarrito)),
+          console.log(reservasCarrito)) :
+          console.log(`el auto ${elemento.marca} ya existe en el carrito`)
+}
 
+  let formAddCar= document.getElementById("formAddCar")
+  
 /* AGREGAR NUEVO AUTO A CATALOGO */
 function agregarNuevoAuto (array) {
     let marca = document.getElementById("marcaInput")
@@ -86,16 +100,16 @@ function agregarNuevoAuto (array) {
     console.log(nuevoAuto)
     array.push(nuevoAuto)
     formAddCar.reset ()
-
+    
     localStorage.setItem("garaje", JSON.stringify(garaje))
 }
 
 let addCarBtn = document.getElementById("addCarBtn")
 addCarBtn.addEventListener ("click", () =>{
-    agregarNuevoAuto(garaje)
+  agregarNuevoAuto(garaje)
     mostrarGarajeDOM (garaje)
-
-})
+    
+  })
 
 /* ORDEN */
 
@@ -121,7 +135,7 @@ function precioMenor (array) {
   let precioMenorMayor = array.concat ()
   precioMenorMayor.sort (
     (precio1, precio2) => precio1.precio - precio2.precio
-  )
+    )
   mostrarGarajeDOM (precioMenorMayor)
 }
 
@@ -130,8 +144,8 @@ function precioMayor (array) {
   let precioMenorMayor = array.concat ()
   precioMenorMayor.sort (
     (precio1, precio2) => precio2.precio - precio1.precio
-  )
-  mostrarGarajeDOM (precioMenorMayor)
+    )
+    mostrarGarajeDOM (precioMenorMayor)
 }
 
 /* ORDEN CATALOGO */
@@ -139,7 +153,7 @@ let selectOrden = document.getElementById("selectOrden")
 console.log(selectOrden)
 selectOrden.addEventListener("change", () => {
     switch(selectOrden.value){
-        case "1":
+      case "1":
           precioMayor (garaje)
         break
         case "2":
@@ -147,9 +161,9 @@ selectOrden.addEventListener("change", () => {
         break
         case "3":
           ordenAlfabetico (garaje)
-        break
-        default:
-          mostrarGarajeDOM (garaje)
+          break
+          default:
+            mostrarGarajeDOM (garaje)
     }
 })
 
@@ -162,7 +176,7 @@ function buscarAuto (buscador, array) {
   let coincidencias = array.filter (
     (auto) => {
       return auto.marca.toLowerCase().startsWith(buscador.toLowerCase()) || auto.modelo.toLowerCase().startsWith(buscador.toLowerCase())}
-  )
+      )
   coincidencias.length > 0 ? (console.log(coincidencias), mostrarGarajeDOM (coincidencias)) : (mostrarGarajeDOM (array), coincidenciasDiv.innerHTML = `<h3>No hay coincidencias con su busqueda</h3>`)
   
   
@@ -185,23 +199,23 @@ function cotizarAlquiler (array) {
   let diasAuto =document.getElementById("diasAuto").value
   console.log(`ID:${idAuto}`)
   console.log(`Cantidad de dias:${diasAuto}`)
-
+  
   let autoSelect = garaje.find(
     (auto) => auto.id == idAuto
   )
-
+  
   let total = 0
   total = diasAuto * autoSelect.precio
   console.log (`id auto: ${idAuto}, dias: ${diasAuto}, total: $${total}`)
-
+  
   formCoti.reset ()
-
+  
   /* MOSTRAR RESULTADO EN HTML */
   resultCot.innerHTML = ""
   let nuevoResultado = document.createElement ("div")
   nuevoResultado.className = "text-success"
   nuevoResultado.innerHTML = `
-    <h5>Total: $${total}</h5>
+  <h5>Total: $${total}</h5>
   `
   resultCot.append(nuevoResultado)
   
@@ -224,7 +238,7 @@ function eliminarAuto(array) {
 	let coincidencia = false;
 	for (let auto of array) {
 		if (auto.id == idEliminar) {
-			let indice = array.indexOf(auto);
+      let indice = array.indexOf(auto);
 			array.splice(indice, 1);
 			mostrarGarajeDOM(array);
 		}
@@ -237,6 +251,48 @@ function eliminarAuto(array) {
 }
 
 formEliminar.addEventListener("submit", (e) => {
-	e.preventDefault();
+  e.preventDefault();
 	eliminarAuto(garaje);
 })
+
+/* MODAL CARRRIO */
+let autosReservadosModal = document.getElementById("autosReservadosModal")
+
+let reservasBtn = document.getElementById("reservasBtn")
+
+function cargarReservaModal (array) {
+  autosReservadosModal.innerHTML= ""
+  array.forEach(
+    (reservasCarrito) => {
+      autosReservadosModal.innerHTML += `
+      <div id="${reservasCarrito.id}" class="card text-center text-bg-dark border border-light" style="width: 13rem;">
+      <img src="./img/${reservasCarrito.imagen}" class="card-img-top"">
+      <div class="card-body">
+        <h4 class="card-title">${reservasCarrito.marca} ${reservasCarrito.modelo}</h4>
+        <p class="card-text">Precio: $${reservasCarrito.precio}</p>
+        <button class="btn btn-outline-danger" type="submit" id="reservarBtn${reservasCarrito.id}">Quitar reserva</button>
+      </div>
+    </div>`
+    }
+  )
+  totalReservas(array)
+}
+
+let precioTotal = document.getElementById("precioTotal")
+
+/* CALCULAR TOTAL CARRITO */
+function totalReservas (array) {
+  const totalReduce = array.reduce (
+    (acumulador, auto)=>
+    {return acumulador + auto.precio},
+    0
+  )
+  totalReduce != 0 ? precioTotal.innerHTML = `El total de su reserva es de: $${totalReduce}` : precioTotal.innerHTML = `No hay productos reservados`
+}
+
+
+reservasBtn.addEventListener("click", () => {
+  cargarReservaModal(reservasCarrito)
+})
+
+mostrarGarajeDOM (garaje)

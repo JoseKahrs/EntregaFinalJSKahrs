@@ -33,7 +33,7 @@
           </form>
         </div>
         <!-- MIS RESERVAS BOTON -->
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" id="reservasBtn">
           Mis reservas
         </button>
         <!-- Modal -->
@@ -44,10 +44,12 @@
                 <h2 class="modal-title fs-5 text-white" id="exampleModalLabel">Mis reservas:</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body" id="autosReservados">
+              <div class="modal-body d-flex flex-wrap gap-2 justify-content-around" id="autosReservadosModal">
                 <!-- AUTOS RESERVADOS -->
               </div>
+              <p id="precioTotal" class="text-warning text-center fs-4"></p>
               <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Finalizar Alquiler</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
               </div>
             </div>
@@ -56,7 +58,7 @@
       </div>
     </nav>
   </header>
-
+  
 
   <div id="title">
     <h1 class="text-center my-5">Bienvenidos a JS Rent a Car</h1>
