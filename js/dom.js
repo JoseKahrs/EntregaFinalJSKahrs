@@ -1,25 +1,25 @@
 /* CREACION OBJETO DE AUTOS */
 class Auto {
-    constructor (id, marca, modelo, ano, tipo, precio, imagen){
-      this.id = id,
-      this.marca = marca,
-      this.modelo = modelo, 
-      this.ano = ano, 
-      this.tipo = tipo,
-      this.precio = precio,
-      this.imagen = imagen
-    }
-    mostrarInfoAuto () {
-      console.log (`El auto ${i}, es marca ${marca}, su modelo es ${modelo}, del ano ${ano}, tipo ${tipo} y su precio es de $${precio}`)
-    }
-    catAuto () {
-      console.log (this.id, this.marca, this.modelo, this.ano, this.tipo, this.precio)
-    }
-  
+  constructor (id, marca, modelo, ano, tipo, precio, imagen){
+    this.id = id,
+    this.marca = marca,
+    this.modelo = modelo, 
+    this.ano = ano, 
+    this.tipo = tipo,
+    this.precio = precio,
+    this.imagen = imagen
+  }
+  mostrarInfoAuto () {
+    console.log (`El auto ${i}, es marca ${marca}, su modelo es ${modelo}, del ano ${ano}, tipo ${tipo} y su precio es de $${precio}`)
+  }
+  catAuto () {
+    console.log (this.id, this.marca, this.modelo, this.ano, this.tipo, this.precio)
   }
   
-  /* AGREGAR AUTOS */
-  const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
+}
+
+/* AGREGAR AUTOS */
+const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
   const auto2 = new Auto (2, "Bmw", "X6", 2021, "suv", 2000,"bmw2.jpg")
   const auto3 = new Auto (3, "Audi", "A3", 2021, "sedan", 800,"audi1.png")
   const auto4 = new Auto (4, "Audi", "R8", 2020, "coupe", 3500,"audi2.jpg")
@@ -30,9 +30,22 @@ class Auto {
   const auto9 = new Auto (9, "Ford", "Mustang", 2020, "coupe", 2600,"fordM.jpeg")
   const auto10 = new Auto (10, "Ford", "Raptor", 2022, "4x4", 1800,"fordR.png")
 
-  const garaje = []
-garaje.push (auto1, auto2, auto3, auto4, auto5, auto6, auto7, auto8, auto9, auto10)
+  /* const garaje = []
+garaje.push (auto1, auto2, auto3, auto4, auto5, auto6, auto7, auto8, auto9, auto10) */
 
+/* LOCALSTORAGE AUTO AGREGADO */
+let garaje = []
+if (localStorage.getItem("garaje")) {
+  console.log("ya esxiste")
+  garaje = JSON.parse(localStorage.getItem("garaje"))
+  console.log(garaje)
+}else {
+  console.log("seteamos por primera vez")
+  garaje.push (auto1, auto2, auto3, auto4, auto5, auto6, auto7, auto8, auto9, auto10)
+  console.log(garaje)
+  localStorage.setItem("garaje", JSON.stringify(garaje))
+
+}
 
 let garajeAutos = document.getElementById("garaje")
 
@@ -73,6 +86,8 @@ function agregarNuevoAuto (array) {
     console.log(nuevoAuto)
     array.push(nuevoAuto)
     formAddCar.reset ()
+
+    localStorage.setItem("garaje", JSON.stringify(garaje))
 }
 
 let addCarBtn = document.getElementById("addCarBtn")
@@ -224,14 +239,4 @@ function eliminarAuto(array) {
 formEliminar.addEventListener("submit", (e) => {
 	e.preventDefault();
 	eliminarAuto(garaje);
-});
-
-/* VISTA USUARIO: Catalogo y cotizador */
-
-/* VISTA EMPRESA: Catalogo, agregar y eliminar vehiculo */
-
-/* VISTA AMDAS: ambas */
-
-/* ANADIR A CARRITO (RESERVAS) */
-/* boton */
-let 
+})
