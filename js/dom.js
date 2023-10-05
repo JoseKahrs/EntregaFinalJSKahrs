@@ -59,6 +59,8 @@ const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
   let autosReservadosModal = document.getElementById("autosReservadosModal")
   let reservasBtn = document.getElementById("reservasBtn")
   let precioTotal = document.getElementById("precioTotal")
+  let reservarBtn = document.getElementById("reservarBtn")
+  let finalizarReservaBtn = document.getElementById("finalizarReserva")
   
   /* FUNCIONES */
   /* MOSTRAR GARAJE */
@@ -75,8 +77,10 @@ const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
         <p class="card-text">ID: ${auto.id}</p>
         <p class="card-text">Año: ${auto.ano}</p>
         <p class="card-text">Tipo: ${auto.tipo}</p>
-        <p class="card-text text-danger fs-5 text fw-semibold">Precio: $${auto.precio}</p>
-        <button class="btn btn-outline-success" type="submit" id="reservarBtn${auto.id}">Reservar</button>
+        <p class="card-text text-danger fs-5 text fw-semibold">Precio / Dia: $${auto.precio}</p>
+        <button class= "btn btn-sm btn-outline-success" id="..."><i class=""></i>+1</button>
+        <button class= "btn btn-sm btn-outline-danger" id="..."><i class=""></i>-1</button> 
+        <button class="btn btn-success" type="submit" id="reservarBtn${auto.id}">Reservar</button>
         </div>
         </div>`
       garajeAutos.append(autoNuevoDiv)
@@ -95,8 +99,24 @@ const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
         (
           reservasCarrito.push(elemento),
           localStorage.setItem("reservas", JSON.stringify(reservasCarrito)),
-          console.log(reservasCarrito)) :
-          console.log(`el auto ${elemento.marca} ya existe en el carrito`)
+          Toastify({
+            text: `Has reservado el auto ${elemento.marca} ${elemento.modelo}`,
+            duration: 1500,
+            gravity: "bottom",
+            position: "right",
+            style : {
+              background: "linear-gradient(to right, #00b09b, #96c93d)",
+            }
+            }).showToast()) :
+            Toastify({
+              text: "Ya has reservado este vehiculo",
+              duration: 1500,
+              gravity: "bottom",
+              position: "right",
+              style : {
+                background: "linear-gradient(to right, red, orange)",
+              }
+              }).showToast()
         }
         
         
@@ -158,6 +178,7 @@ function ordenAlfabetico (array) {
           0
           )
           totalReduce != 0 ? precioTotal.innerHTML = `El total de su reserva es de: $${totalReduce}` : precioTotal.innerHTML = `No hay productos reservados`
+        return totalReduce
       }
       
       /* CALCULAR ALQUILER */
@@ -207,7 +228,7 @@ function ordenAlfabetico (array) {
         }
       }
     if (!coincidencia) {
-      console.log(`NO SE PUDO`);
+      console.log(`NO SE PUDO`)
     }
     
     formEliminar.reset();
@@ -220,7 +241,7 @@ function ordenAlfabetico (array) {
     array.forEach(
       (reservasCarrito) => {
         autosReservadosModal.innerHTML += `
-        <div id="${reservasCarrito.id}" class="card text-center text-bg-dark border border-light" style="width: 13rem;">
+        <div id="reserva${reservasCarrito.id}" class="card text-center text-bg-dark border border-light" style="width: 13rem;">
         <img src="./img/${reservasCarrito.imagen}" class="card-img-top"">
         <div class="card-body">
         <h4 class="card-title">${reservasCarrito.marca} ${reservasCarrito.modelo}</h4>
@@ -230,11 +251,50 @@ function ordenAlfabetico (array) {
         </div>`
       }
       )
+
+    array.forEach (
+      (reservasCarrito) => {
+        document.getElementById(`reservarBtn${reservasCarrito.id}`).addEventListener("click", () => {
+          let reserva = document.getElementById(`reserva${reservasCarrito.id}`)
+          reserva.remove ()
+          let posicion = array.indexOf(reservasCarrito)
+          array.splice(posicion, 1)
+          localStorage.setItem("reservas", JSON.stringify(array))
+          totalReservas(array)
+          Toastify({
+            text: "Se ha eliminado la reserva",
+            duration: 1500,
+            gravity: "bottom",
+            position: "left",
+            style : {
+              background: "#ffe65d",
+              color: "black",
+            }
+            }).showToast()
+        })
+      }
+    )
+
       totalReservas(array)
     }
-    
+
+    /* CONFIRMAR RESERVA */
+    function finalizarReserva (array) {
+      let total = totalReservas (array)
+      Swal.fire ({
+        title: "Gracias por su reserva!",
+        text: `El monto total de su reserva es de $${total}`,
+        icon: "success"
+      })
+      reservasCarrito = []
+      localStorage.removeItem("reservas")
+    }
     
     /* EVENTOS */
+    finalizarReservaBtn.addEventListener("click", () => {
+      finalizarReserva(reservasCarrito)
+    })
+
     cotizarBtn.addEventListener ("click", () => {
       cotizarAlquiler (garaje)
       
