@@ -61,6 +61,7 @@ const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
   let precioTotal = document.getElementById("precioTotal")
   let reservarBtn = document.getElementById("reservarBtn")
   let finalizarReservaBtn = document.getElementById("finalizarReserva")
+  let feachaDiv = document.getElementById("fechaDiv")
   
   /* FUNCIONES */
   /* MOSTRAR GARAJE */
@@ -78,8 +79,6 @@ const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
         <p class="card-text">Año: ${auto.ano}</p>
         <p class="card-text">Tipo: ${auto.tipo}</p>
         <p class="card-text text-danger fs-5 text fw-semibold">Precio / Dia: $${auto.precio}</p>
-        <button class= "btn btn-sm btn-outline-success" id="..."><i class=""></i>+1</button>
-        <button class= "btn btn-sm btn-outline-danger" id="..."><i class=""></i>-1</button> 
         <button class="btn btn-success" type="submit" id="reservarBtn${auto.id}">Reservar</button>
         </div>
         </div>`
@@ -246,7 +245,9 @@ function ordenAlfabetico (array) {
         <div class="card-body">
         <h4 class="card-title">${reservasCarrito.marca} ${reservasCarrito.modelo}</h4>
         <p class="card-text">Precio: $${reservasCarrito.precio}</p>
-        <button class="btn btn-outline-danger" type="submit" id="reservarBtn${reservasCarrito.id}">Quitar reserva</button>
+        <button class= "btn btn-sm btn-outline-success" id="sumarBtn"><i class=""></i>+1</button>
+        <button class= "btn btn-sm btn-outline-danger" id="restarBtn"><i class=""></i>-1</button> 
+        <button class="btn btn-outline-danger mt-1" type="submit" id="reservarBtn${reservasCarrito.id}">Quitar reserva</button>
         </div>
         </div>`
       }
@@ -289,6 +290,7 @@ function ordenAlfabetico (array) {
       reservasCarrito = []
       localStorage.removeItem("reservas")
     }
+
     
     /* EVENTOS */
     finalizarReservaBtn.addEventListener("click", () => {
@@ -336,3 +338,10 @@ function ordenAlfabetico (array) {
             })
             
 mostrarGarajeDOM (garaje)
+
+  /* LUXON */
+const DateTime = luxon.DateTime
+setInterval(()=>{
+  let fechaAhora = DateTime.now()
+  feachaDiv.innerHTML = `${fechaAhora.toLocaleString(DateTime.DATETIME_MED)}`
+},1000)
