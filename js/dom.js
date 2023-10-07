@@ -199,6 +199,7 @@ const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
         },
       }).showToast();
     }
+    totalReservas(reservasCarrito)
   }
         
         
@@ -387,6 +388,7 @@ function ordenAlfabetico (array) {
         cantidadDiasElement.textContent = `Cantidad de días: ${reserva.cantidad}`;
         const nuevoPrecioTotal = reserva.precio * reserva.cantidad;
         reservaDiv.querySelector("p.card-text:nth-child(4)").textContent = `Precio Total: $${nuevoPrecioTotal}`;
+        totalReservas(array)
       });
   
       restarDiasBtn.addEventListener("click", () => {
@@ -396,7 +398,9 @@ function ordenAlfabetico (array) {
           const nuevoPrecioTotal = reserva.precio * reserva.cantidad;
           reservaDiv.querySelector("p.card-text:nth-child(4)").textContent = `Precio Total: $${nuevoPrecioTotal}`;
         }
-      });
+        totalReservas(array)
+      })
+      totalReservas(array)
     });
   
     array.forEach((reserva) => {
