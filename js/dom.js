@@ -105,11 +105,12 @@ const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
       let sumarDiasBtn = document.getElementById(`sumarDias${auto.id}`);
       let restarDiasBtn = document.getElementById(`restarDias${auto.id}`);
       let precioTotalSpan = document.getElementById(`precioTotal${auto.id}`);
+      let precioOriginal = auto.precio
   
       // Función para actualizar el precio total cuando cambia la cantidad de días
       const actualizarPrecioTotal = () => {
         const cantidadDias = parseInt(diasInput.value);
-        const precioPorDia = auto.precio;
+        const precioPorDia = precioOriginal
         const total = cantidadDias * precioPorDia;
         precioTotalSpan.textContent = total;
       };
@@ -132,8 +133,8 @@ const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
       reservarBtn.addEventListener("click", () => {
         agregarReserva(auto, parseInt(diasInput.value));
         diasInput.value = 1;
+        precioTotalSpan.textContent = precioOriginal;
       });
-      // Resto del código (botón de reserva, etc.)
     }
   }
     
