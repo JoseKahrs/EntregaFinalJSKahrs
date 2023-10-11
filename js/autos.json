@@ -1,0 +1,103 @@
+[
+    {
+        "id" : 1,
+        "marca" : "Bmw",
+        "modelo" : "Serie 3",
+        "ano" : 2022, 
+        "tipo" : "sedan",
+        "precio" : 1000,
+        "imagen" : "bmw1.jpg",
+        "cantidad": 1
+    },
+    {
+        "id" : 2,
+        "marca" : "Bmw",
+        "modelo" : "X6",
+        "ano" : 2021, 
+        "tipo" : "suv",
+        "precio" : 2000,
+        "imagen" : "bmw2.jpg",
+        "cantidad": 1
+    },
+    {
+        "id" : 3,
+        "marca" : "Audi",
+        "modelo" : "A3",
+        "ano" : 2021, 
+        "tipo" : "sedan",
+        "precio" : 800,
+        "imagen" : "audi1.png",
+        "cantidad": 1
+    },
+    {
+        "id" : 4,
+        "marca" : "Audi",
+        "modelo" : "R8",
+        "ano" : 2020, 
+        "tipo" : "coupe",
+        "precio" : 3500,
+        "imagen" : "audi2.jpg",
+        "cantidad": 1
+    },
+    {
+        "id" : 5,
+        "marca" : "Mercedes-Benz",
+        "modelo" : "Clase A",
+        "ano" : 2020, 
+        "tipo" : "berlina",
+        "precio" : 900,
+        "imagen" : "mb1.png",
+        "cantidad": 1
+    },
+    {
+        "id" : 6,
+        "marca" : "Mercedes-Benz",
+        "modelo" : "SL",
+        "ano" : 2023, 
+        "tipo" : "cabrio",
+        "precio" : 3000,
+        "imagen" : "mb2.jpg",
+        "cantidad": 1
+    },
+    {
+        "id" : 7,
+        "marca" : "Porsche",
+        "modelo" : "Macan",
+        "ano" : 2022, 
+        "tipo" : "suv",
+        "precio" : 2300,
+        "imagen" : "porsche1.jpg",
+        "cantidad": 1
+    },
+    {
+        "id" : 8,
+        "marca" : "Porsche",
+        "modelo" : "Cayenne",
+        "ano" : 2023, 
+        "tipo" : "coupe",
+        "precio" : 2600,
+        "imagen" : "porsche2.jpg",
+        "cantidad": 1
+    },
+    {
+        "id" : 9,
+        "marca" : "Ford",
+        "modelo" : "Mustang",
+        "ano" : 2020, 
+        "tipo" : "coupe",
+        "precio" : 2500,
+        "imagen" : "fordM.jpeg",
+        "cantidad": 1
+    },
+    {
+        "id" : 10,
+        "marca" : "Ford",
+        "modelo" : "Raptor",
+        "ano" : 2022, 
+        "tipo" : "4x4",
+        "precio" : 1800,
+        "imagen" : "fordR.png",
+        "cantidad": 1
+    }
+    
+]
