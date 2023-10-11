@@ -219,6 +219,11 @@ const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
             });
             return;
           }
+          Swal.fire({
+            title: "Agregado!",
+            text: `Se ha añadido el auto: ${marca.value} ${modelo.value}`,
+            icon: "success"
+          })
           const nuevoAuto = new Auto (array.length+1, marca.value, modelo.value, ano.value, tipoSeleccionado, precio.value, "prox.jpg")
           console.log(nuevoAuto)
     array.push(nuevoAuto)
@@ -300,6 +305,8 @@ function ordenAlfabetico (array) {
               title: "Atencion!",
               text: "El ID ingresado no existe en el garaje",
             })
+            idAuto = ""
+            diasAuto = ""
             return;
           }
           let total = 0
@@ -314,6 +321,8 @@ function ordenAlfabetico (array) {
             icon: "info",
           });
           resultCot.append(nuevoResultado)
+          idAuto = ""
+          diasAuto = ""
         }
         
         /* BUSCAR POR MARCA */
@@ -338,6 +347,11 @@ function ordenAlfabetico (array) {
           array.splice(indice, 1);
           coincidencia = true;
           mostrarGarajeDOM(array);
+          Swal.fire({
+            title: "Se ha eliminado",
+            text: `El auto ${auto.marca} ${auto.modelo} se ha eliminado de la lista`,
+            icon: "error"
+          })
         }
       }
       if (!coincidencia){
@@ -345,6 +359,7 @@ function ordenAlfabetico (array) {
           title: "Atencion!",
           text: "El ID ingresado no existe en el garaje",
         })
+        formEliminar.reset ()
         return;
       }
 
