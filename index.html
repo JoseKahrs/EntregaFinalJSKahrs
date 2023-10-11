@@ -66,40 +66,7 @@
   <div id="title">
     <h1 class="text-center my-5">Bienvenidos a JS Rent a Car</h1>
   </div>
-
-<!-- COTIZADOR DE ALQUILER -->
-  <section id="cotizar" class="border border-secondary">
-    <!-- TITULO COTIZACION -->
-    <h2>Cotizar alquiler</h2>
-    <form action="cotizacion" id="formCoti" class="d-flex">
-      <!-- ID VEHICULO -->
-      <div class="row g-3 align-items-center">
-        <div class="col-auto">
-          <label for="id" class="col-form-label fw-bold">ID del vehiculo:</label>
-        </div>
-        <div class="col-auto">
-          <input type="number" id="idAuto" class="form-control" placeholder="ID del vehiculo">
-        </div>
-      </div>
-      <!-- CANTIDAD DE DIAS -->
-      <div class="row g-3 align-items-center">
-        <div class="col-auto">
-          <label for="dias" class="col-form-label fw-bold">Cantidad de dias:</label>
-        </div>
-        <div class="col-auto">
-          <input type="number" id="diasAuto" class="form-control" placeholder="Cantidad de dias">
-        </div>
-      </div>
-      <!-- BOTON COTIZACION -->
-      <button type="button" class="btn btn-primary" id="cotizarBtn">Cotizar</button>
-      <!-- RESULTADO COTIZACION -->
-      <div class="row g-3 align-items-center">
-        <div class="col-auto" id="resultCot">
-        <!-- RESULTADO -->
-      </div>
-    </form>
-  </section>
-
+  
   <main>
     <h3 class="text-center text-white">Nuestra flota:</h3>
     <div id="coincidenciasDiv" class="text-center">
@@ -111,98 +78,100 @@
     </div>
   </main>
 
-  <!-- AGREGAR UN AUTO AL CATALOGO -->
-  <section id="agregar" class="text-center border border-secondary">
-    <!-- ENCABEZADO -->
-    <h2 class="mb-3">Agregar un auto al catalogo</h2>
-    <!-- FORMULARIO PARA ANADIR AUTO -->
-    <form id="formAddCar">
-      <!-- MARCA -->
-      <div class="column g-3 align-items-center mt-1">
-        <div class="col-auto">
-          <label for="marca" class="col-form-label fw-bold">Marca:</label>
-        </div>
-        <div class="col-auto">
-          <input type="text" id="marcaInput" class="form-control text-center" placeholder="Marca" required>
-        </div>
+  <section id="cotizar" class="border border-secondary">
+    <!-- Botón para abrir el modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarModal">Agregar Auto</button>
+
+<!-- Modal -->
+<div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="agregarModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header bg-body-secondary">
+        <h2 class="modal-title fs-5 text-black" id="agregarModalLabel">Agregar nuevo auto:</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
-      <!-- MODELO -->
-      <div class="column g-3 align-items-center mt-1">
-        <div class="col-auto">
-          <label for="modelo" class="col-form-label fw-bold">Modelo:</label>
-        </div>
-        <div class="col-auto">
-          <input type="text" id="modeloInput" class="form-control text-center" placeholder="Modelo" required>
-        </div>
-      </div>
-      <!-- ANO -->
-      <div class="column g-3 align-items-center mt-1">
-        <div class="col-auto">
-          <label for="ano" class="col-form-label fw-bold">Año:</label>
-        </div>
-        <div class="col-auto">
-          <input type="number" id="anoInput" class="form-control text-center" placeholder="Año" required>
-        </div>
-      </div>
-      <!-- SELECCION DE TIPO -->
-      <div class="column g-3 align-items-center mt-1">
-        <div class="col-auto">
-          <label for="ano" class="col-form-label fw-bold text-center">Tipo:</label>
-        </div>
-        <div class="col-auto">
-          <ul>
-            <select class="form-select form-select-md text-center" aria-label=".form-select-sm example">
-              <option selected class="fw-bold text-center" id="tipoInput">Tipo:</option>
+      <div class="modal-body d-flex flex-wrap gap-2 justify-content-around text-black">
+        <form id="formAddCar">
+          <!-- Marca -->
+          <div class="mb-3">
+            <label for="marca" class="form-label fw-bold">Marca:</label>
+            <input type="text" id="marcaInput" class="form-control" placeholder="Marca" required>
+          </div>
+          <!-- Modelo -->
+          <div class="mb-3">
+            <label for="modelo" class="form-label fw-bold">Modelo:</label>
+            <input type="text" id="modeloInput" class="form-control" placeholder="Modelo" required>
+          </div>
+          <!-- Año -->
+          <div class="mb-3">
+            <label for="ano" class="form-label fw-bold">Año:</label>
+            <input type="number" id="anoInput" class="form-control" placeholder="Año" required>
+          </div>
+          <!-- Selección de tipo -->
+          <div class="mb-3">
+            <label for="tipoInput" class="form-label fw-bold">Tipo:</label>
+            <select class="form-select" id="tipoInput" required>
+              <option value="" disabled selected>Seleccione un tipo</option>
               <option value="1">Sedan</option>
               <option value="2">Coupe</option>
               <option value="3">Deportivo</option>
               <option value="4">Cabrio</option>
-              <option value="5">Suv</option>
+              <option value="5">SUV</option>
               <option value="6">Berlina</option>
               <option value="7">Pickup</option>
               <option value="8">Otro</option>
             </select>
-          </ul>
-        </div>
+          </div>
+          <!-- Precio -->
+          <div class="mb-3">
+            <label for="precio" class="form-label fw-bold">Precio:</label>
+            <input type="number" id="precioInput" class="form-control" placeholder="Precio" required>
+          </div>
+          <!-- Adjuntar imagen -->
+          <div class="mb-3">
+            <label for="img" class="form-label fw-bold">Adjuntar imagen del vehículo:</label>
+            <input type="file" class="form-control" id="img">
+          </div>
+        </form>
       </div>
-      <!-- PRECIO -->
-      <div class="column g-3 align-items-center mt-1">
-        <div class="col-auto">
-          <label for="precio" class="col-form-label fw-bold">Precio:</label>
-        </div>
-        <div class="col-auto">
-          <input type="number" id="precioInput" class="form-control text-center" placeholder="Precio" required>
-        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="addCarBtn">Agregar</button>
       </div>
-      <!-- ADJUNTAR IMG -->
-      <div class="column g-3 align-items-center mt-1">
-        <div class="col-auto">
-          <label for="img" class="col-form-label fw-bold">Adjuntar imagen del vehiculo:</label>
-          <input class="form-control text-center" type="file" id="img">
-        </div>
+    </div>
+  </div>
+</div>
+<!-- Botón para abrir el modal de eliminación -->
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarModal">Eliminar Auto</button>
+
+<!-- Modal de eliminación -->
+<div class="modal fade" id="eliminarModal" tabindex="-1" aria-labelledby="eliminarModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-body-secondary">
+        <h4 class="modal-title text-black" id="eliminarModalLabel">Eliminar un auto del catálogo</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
-    </form>
-    <button type="button" class="btn btn-primary mt-1" id="addCarBtn">Agregar</button>
-    <!-- BOTON PARA ANADIR -->
+      <div class="modal-body bg-body-danger">
+        <form id="formEliminar" class="d-flex justify-content-around">
+          <!-- ID A ELIMINAR-->
+          <div class="mb-3 text-black text-center">
+            <label for="idEliminar" class="form-label fw-bold">ID del vehículo:</label>
+            <input type="number" id="idEliminar" class="form-control" placeholder="ID del vehículo">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-danger" id="eliminarBtnModal">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   </section>
 
-  <!-- ELIMINAR UN AUTO DEL CATALOGO -->
-  <section id="eliminar" class="border border-secondary">
-    <h4 class="text-white">Eliminar un auto del catalogo</h4 class="text-white">
-    <form id="formEliminar" class="d-flex">
-      <!-- ID A ELIMINAR-->
-      <div class="row g-3 align-items-center">
-        <div class="col-auto">
-          <label for="id" class="col-form-label fw-bold">ID del vehiculo:</label>
-        </div>
-        <div class="col-auto">
-          <input type="number" id="idEliminar" class="form-control" placeholder="ID del vehiculo">
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary mt-1" id="eliminarBtn">Eliminar</button>
-    </form>
-  </section>
-  
   <footer class="d-flex justify-content-around align-items-center">
     <!-- fecha -->
     <div id="fechaDiv" class="text-white fs-6 text">

@@ -70,12 +70,12 @@ const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
   let reservarBtn = document.getElementById("reservarBtn")
   let finalizarReservaBtn = document.getElementById("finalizarReserva")
   let feachaDiv = document.getElementById("fechaDiv")
-  
+  let eliminarBtnModal = document.getElementById("eliminarBtnModal")
   /* FUNCIONES */
   /* MOSTRAR GARAJE */
   function mostrarGarajeDOM(array) {
     garajeAutos.innerHTML = "";
-  
+    
     for (let auto of array) {
       let autoNuevoDiv = document.createElement("div");
       autoNuevoDiv.className = "col-12 col-md-3 col-lg-3 m-2";
@@ -170,12 +170,11 @@ const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
     }
   }
   
-  
   /* AGREGAR RESERVA */
   function agregarReserva (elemento, cantidadDias) {
     let autoReservado = reservasCarrito.find ((auto) => auto.id == elemento.id)
       if (autoReservado === undefined) {
-      elemento.cantidad = cantidadDias; // Agregar la cantidad de días a la reserva
+      elemento.cantidad = cantidadDias;
       reservasCarrito.push(elemento);
       localStorage.setItem("reservas", JSON.stringify(reservasCarrito));
   
@@ -203,29 +202,29 @@ const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
   }
         
         
-        /* AGREGAR NUEVO AUTO A CATALOGO */
-        function agregarNuevoAuto (array) {
-          let marca = document.getElementById("marcaInput")
-          let modelo = document.getElementById("modeloInput")
-          let ano = document.getElementById("anoInput")
-          let tipo = document.getElementById("tipoInput")
-          let precio = document.getElementById("precioInput")
-          let tipoSeleccionado = tipo.value;
-          if (marca.value.trim() === "" || modelo.value.trim() === "" || ano.value.trim() === "" || tipoSeleccionado === "" || precio.value.trim() === ""){
-            Swal.fire({
-              title: "Aviso!",
-              text: "Por favor complete todos los campos solicitados",
-              icon: "info"
-            });
-            return;
-          }
-          Swal.fire({
-            title: "Agregado!",
-            text: `Se ha añadido el auto: ${marca.value} ${modelo.value}`,
-            icon: "success"
-          })
-          const nuevoAuto = new Auto (array.length+1, marca.value, modelo.value, ano.value, tipoSeleccionado, precio.value, "prox.jpg")
-          console.log(nuevoAuto)
+  /* AGREGAR NUEVO AUTO A CATALOGO */
+  function agregarNuevoAuto (array) {
+    let marca = document.getElementById("marcaInput")
+    let modelo = document.getElementById("modeloInput")
+    let ano = document.getElementById("anoInput")
+    let tipo = document.getElementById("tipoInput")
+    let precio = document.getElementById("precioInput")
+    let tipoSeleccionado = tipo.options[tipo.selectedIndex].text;
+      if (marca.value.trim() === "" || modelo.value.trim() === "" || ano.value.trim() === "" || tipoSeleccionado === "" || precio.value.trim() === ""){
+        Swal.fire({
+          title: "Aviso!",
+          text: "Por favor complete todos los campos solicitados",
+          icon: "info"
+        });
+        return;
+      }
+      Swal.fire({
+        title: "Agregado!",
+        text: `Se ha añadido el auto: ${marca.value} ${modelo.value}`,
+        icon: "success"
+      })
+      const nuevoAuto = new Auto (array.length+1, marca.value, modelo.value, ano.value, tipoSeleccionado, precio.value, "prox.jpg")
+      console.log(nuevoAuto)
     array.push(nuevoAuto)
     formAddCar.reset ()
     localStorage.setItem("garaje", JSON.stringify(garaje))
@@ -283,47 +282,6 @@ function ordenAlfabetico (array) {
         return totalReduce;
       }
       
-      
-      /* CALCULAR ALQUILER */
-      function cotizarAlquiler (array) {
-        let idAuto = document.getElementById("idAuto").value
-        let diasAuto =document.getElementById("diasAuto").value
-        if (diasAuto.trim() === "") {
-          Swal.fire({
-            title: "Atencion!",
-            text: "Ingrese la cantidad de dias que desea reservar",
-          })
-          return;
-        }
-        console.log(`ID:${idAuto}`)
-        console.log(`Cantidad de dias:${diasAuto}`)
-        let autoSelect = garaje.find(
-          (auto) => auto.id == idAuto
-          );
-          if (!autoSelect){
-            Swal.fire({
-              title: "Atencion!",
-              text: "El ID ingresado no existe en el garaje",
-            })
-            idAuto = ""
-            diasAuto = ""
-            return;
-          }
-          let total = 0
-          total = diasAuto * autoSelect.precio
-          console.log (`id auto: ${idAuto}, dias: ${diasAuto}, total: $${total}`)
-          formCoti.reset ()
-          /* MOSTRAR RESULTADO EN HTML */
-          resultCot.innerHTML = ""
-          Swal.fire({
-            title: "Cotización de alquiler",
-            html: `La reserva tendra un costo de: $${total}`,
-            icon: "info",
-          });
-          resultCot.append(nuevoResultado)
-          idAuto = ""
-          diasAuto = ""
-        }
         
         /* BUSCAR POR MARCA */
         function buscarAuto (buscador, array) {
@@ -333,9 +291,6 @@ function ordenAlfabetico (array) {
       )
       coincidencias.length > 0 ? (console.log(coincidencias), mostrarGarajeDOM (coincidencias)) : (mostrarGarajeDOM (array), coincidenciasDiv.innerHTML = `<h3>No hay coincidencias con su busqueda</h3>`)
     }
-    
-    
-    
     
     /* ELIMINAR AUTO DE CATALOGO */
     function eliminarAuto(array) {
@@ -449,7 +404,7 @@ function ordenAlfabetico (array) {
       if (total === 0){
         Swal.fire({
           title: "Atención!",
-          text: "El carrito de reserva está vacío. No se puede finalizar la compra.",
+          text: "El carrito de reserva está vacío. Realiza la reserva de al menos un vehiculo para finalizar.",
           icon: "warning"
         });
         return;
@@ -468,17 +423,10 @@ function ordenAlfabetico (array) {
     finalizarReservaBtn.addEventListener("click", () => {
       finalizarReserva(reservasCarrito)
     })
-
-    cotizarBtn.addEventListener ("click", () => {
-      cotizarAlquiler (garaje)
-      
-    })
     
-    formEliminar.addEventListener("submit", (e) => {
-      e.preventDefault();
+    eliminarBtnModal.addEventListener("click", () => {
       eliminarAuto(garaje);
     })
-
    
     buscador.addEventListener("input", () => {
       console.log(buscador.value)
