@@ -21,7 +21,6 @@
   /* MOSTRAR GARAJE */
   function mostrarGarajeDOM(array) {
     garajeAutos.innerHTML = "";
-    
     for (let auto of array) {
       let autoNuevoDiv = document.createElement("div");
       autoNuevoDiv.className = "col-12 col-md-3 col-lg-3 m-2";
@@ -392,17 +391,17 @@ function ordenAlfabetico (array) {
       switch(selectOrden.value){
         case "1":
           precioMayor (garaje)
-          break
-          case "2":
-            precioMenor (garaje)
-            break
-            case "3":
-              ordenAlfabetico (garaje)
-              break
-              default:
-                mostrarGarajeDOM (garaje)
-              }
-            })
+        break
+        case "2":
+          precioMenor (garaje)
+        break
+        case "3":
+          ordenAlfabetico (garaje)
+        break
+        default:
+          mostrarGarajeDOM (garaje)
+        }
+    })
             
 mostrarGarajeDOM (garaje)
 

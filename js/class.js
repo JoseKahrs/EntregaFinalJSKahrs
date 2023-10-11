@@ -27,26 +27,26 @@ class Auto {
   }
 
   const cargarGaraje = async () =>{
-    const resp = await fetch("autos.json")
+    const resp = await fetch(`./js/autos.json`)
     const infoAutos = await resp.json()
     for(let auto of infoAutos){
         let autoNuevo = new Auto (auto.id, auto.marca, auto.modelo, auto.ano, auto.tipo, auto.precio, auto.imagen)
         garaje.push(autoNuevo)
     }
     localStorage.setItem("garaje", JSON.stringify(garaje))
+    mostrarGarajeDOM(garaje)
 }
-
 let garaje = []
+
  if(localStorage.getItem("garaje")){
      
      for(let auto of JSON.parse(localStorage.getItem("garaje"))){
          let autoStorage = new Auto (auto.id, auto.marca, auto.modelo, auto.ano, auto.tipo, auto.precio, auto.imagen)
         garaje.push(autoStorage)
     }
-
-}else{
+  }else{
     console.log("seteamos por primera vez")
     cargarGaraje()
-    
+    console.log(garaje)
 }
 let reservasCarrito = JSON.parse(localStorage.getItem("reservas")) ?? []
