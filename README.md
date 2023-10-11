@@ -1,3 +1,3 @@
-# Tercerca Pre Entrega JS
+# Entrega Final JS
 ## Jose Luis Kahrs 
 ### Comision 47045
