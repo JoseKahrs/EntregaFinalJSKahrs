@@ -1,59 +1,4 @@
-/* CREACION OBJETO DE AUTOS */
-class Auto {
-  constructor (id, marca, modelo, ano, tipo, precio, imagen){
-    this.id = id,
-    this.marca = marca,
-    this.modelo = modelo, 
-    this.ano = ano, 
-    this.tipo = tipo,
-    this.precio = precio,
-    this.imagen = imagen,
-    this.cantidad = 1
-  }
-  mostrarInfoAuto () {
-    console.log (`El auto ${i}, es marca ${marca}, su modelo es ${modelo}, del ano ${ano}, tipo ${tipo} y su precio es de $${precio}`)
-  }
-  catAuto () {
-    console.log (this.id, this.marca, this.modelo, this.ano, this.tipo, this.precio)
-  }
-  sumarDias(){
-    this.cantidad++
-    return this.cantidad
-  }
-  restarDias(){
-    this.cantidad = this.cantidad -1
-    return this.cantidad
-  }
-}
-
-/* AGREGAR AUTOS */
-const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
-  const auto2 = new Auto (2, "Bmw", "X6", 2021, "suv", 2000,"bmw2.jpg")
-  const auto3 = new Auto (3, "Audi", "A3", 2021, "sedan", 800,"audi1.png")
-  const auto4 = new Auto (4, "Audi", "R8", 2020, "coupe", 3500,"audi2.jpg")
-  const auto5 = new Auto (5, "Mercedes-benz", "Clase a", 2020, "berlina", 900,"mb1.png")
-  const auto6 = new Auto (6, "Mercedes-benz", "Sl", 2023, "cabrio", 3000,"mb2.jpg")
-  const auto7 = new Auto (7, "Porsche", "Macan", 2022, "suv", 2300,"porsche1.jpg")
-  const auto8 = new Auto (8, "Porsche", "Cayenne", 2023, "suv", 2500,"porsche2.jpg")
-  const auto9 = new Auto (9, "Ford", "Mustang", 2020, "coupe", 2600,"fordM.jpeg")
-  const auto10 = new Auto (10, "Ford", "Raptor", 2022, "4x4", 1800,"fordR.png")
-  
-  /* LOCALSTORAGE AUTO AGREGADO */
-  let garaje = []
-  if (localStorage.getItem("garaje")) {
-    console.log("ya esxiste")
-    garaje = JSON.parse(localStorage.getItem("garaje"))
-    console.log(garaje)
-  }else {
-    console.log("seteamos por primera vez")
-    garaje.push (auto1, auto2, auto3, auto4, auto5, auto6, auto7, auto8, auto9, auto10)
-    console.log(garaje)
-    localStorage.setItem("garaje", JSON.stringify(garaje))
-    
-  }
-  
   /* CAPTURAS DE ID */
-  let reservasCarrito = JSON.parse(localStorage.getItem("reservas")) ?? []
   let garajeAutos = document.getElementById("garaje")
   let formAddCar= document.getElementById("formAddCar")
   let addCarBtn = document.getElementById("addCarBtn")
@@ -72,6 +17,7 @@ const auto1 = new Auto (1, "Bmw", "Serie 3", 2022, "sedan", 1000,"bmw1.jpg")
   let feachaDiv = document.getElementById("fechaDiv")
   let eliminarBtnModal = document.getElementById("eliminarBtnModal")
   /* FUNCIONES */
+
   /* MOSTRAR GARAJE */
   function mostrarGarajeDOM(array) {
     garajeAutos.innerHTML = "";
