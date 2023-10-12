@@ -354,9 +354,15 @@ function ordenAlfabetico (array) {
         });
         return;
       }
+      const horaActual = luxon.DateTime.now();
+      const horaAlert = horaActual.toLocaleString({
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      });
       Swal.fire ({
         title: "Gracias por su reserva!",
-        text: `El monto total de su reserva es de $${total}`,
+        text: `El monto total de su reserva es de $${total}.\nMonto para la fecha ${horaAlert} `,
         icon: "success"
       })
       reservasCarrito = []
