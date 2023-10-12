@@ -32,14 +32,15 @@
             <p class="card-text">ID: ${auto.id}</p>
             <p class="card-text">Año: ${auto.ano}</p>
             <p class="card-text">Tipo: ${auto.tipo}</p>
-            <p class="card-text text-danger fs-5 text fw-semibold">Precio / Dia: $${auto.precio}</p>
+            <p class="card-text text-warning fs-5 text fw-semibold">Precio / Dia: $${auto.precio}</p>
             <p class="card-text">Precio Total: $<span id="precioTotal${auto.id}">${auto.precio}</span></p>
             <div class="input-group mb-3">
-              <button class="btn btn-outline-secondary" type="button" id="restarDias${auto.id}">-</button>
+              <span class="input-group-text">Días:</span>
+              <button class="btn btn-outline-danger" type="button" id="restarDias${auto.id}">-</button>
               <input type="number" class="form-control text-center" id="diasInput${auto.id}" value="1" min="1">
-              <button class="btn btn-outline-secondary" type="button" id="sumarDias${auto.id}">+</button>
+              <button class="btn btn-outline-success" type="button" id="sumarDias${auto.id}">+</button>
             </div>
-            <button class="btn btn-success" type="submit" id="reservarBtn${auto.id}">Reservar</button>
+            <button class="btn btn-primary" type="submit" id="reservarBtn${auto.id}">Reservar</button>
           </div>
         </div>
       `;

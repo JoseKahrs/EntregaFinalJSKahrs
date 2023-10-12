@@ -106,7 +106,7 @@ footer h2 a {
 /* MODOS */
 /* LIGHT MODE */
 .lightmode {
-  background-color: white;
+  background-color: rgb(245, 245, 245) !important;
 }
 .lightmode #title h1 {
   color: black;
