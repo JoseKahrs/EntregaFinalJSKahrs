@@ -25,7 +25,7 @@
       let autoNuevoDiv = document.createElement("div");
       autoNuevoDiv.className = "col-12 col-md-3 col-lg-3 m-2";
       autoNuevoDiv.innerHTML = `
-        <div id="${auto.id}" class="card text-center text-bg-dark border border-light" style="width: 18rem;">
+        <div id="${auto.id}" class="card text-center bg-secondary-subtle border border-dark-subtle" style="width: 18rem;">
           <img src="./img/${auto.imagen}" class="card-img-top" alt="${auto.marca} ${auto.modelo}">
           <div class="card-body">
             <h4 class="card-title">${auto.marca} ${auto.modelo}</h4>
